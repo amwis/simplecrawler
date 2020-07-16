@@ -19,7 +19,7 @@ crawl();
 function crawl() {
 
     if (urlList.length == 0) {
-        console.log("Ran out of URLs to crawl under " + domain);
+        // console.log("Ran out of URLs to crawl under " + domain);
         return;
     }
 
@@ -27,6 +27,11 @@ function crawl() {
     // Keeping some console logs for debugging in the future if needed
     // console.log("All available links: " + urlList);
     // console.log("Total count: " + urlList.length);
+
+    if (!nextUrl.includes(domain)) {
+        visitedUrls.push(nextUrl);
+        crawl()
+    }
 
     if (visitedUrls.includes(nextUrl)) {
         // Keeping some console logs for debugging in the future if needed
